@@ -1,0 +1,104 @@
+<section class="login">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card">
+          <div class="card-body p-5 text-center">
+            <h3>Login</h3>
+            <p>Please login to your Account!</p>
+            <form class="container" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <!--<label>First Name</label>-->
+                <input type="text" formControlName="userName" placeholder="Username" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
+                <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                  <div *ngIf="f.userName.errors.required">Username is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <!--<label>Password</label>-->
+                <input type="password" formControlName="password" placeholder="Password" class="form-control form-control-lg" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+              </div>
+              <!--<div class="form-outline mb-4 text-left">
+                <label>User Type</label><br />
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="usertype" [ngClass]="{ 'is-invalid': submitted && f.usertype.errors }"
+                         type="radio"
+                         name="usertype"
+                         value="Member" />
+                  <label class="form-check-label" for="femaleGender">Member</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="usertype" [ngClass]="{ 'is-invalid': submitted && f.usertype.errors }"
+                         type="radio"
+                         name="usertype"
+                         value="Head" />
+                  <label class="form-check-label" for="maleGender">Head</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="usertype" [ngClass]="{ 'is-invalid': submitted && f.usertype.errors }"
+                         type="radio"
+                         name="usertype"
+                         value="Ministry" />
+                  <label class="form-check-label" for="otherGender">Ministry</label>
+                </div>
+                <div *ngIf="submitted && f.usertype.errors" class="invalid-feedback">
+                  <div *ngIf="f.usertype.errors.required">Please select user type</div>
+                </div>
+              </div>-->
+              <div class="form-group form-check text-left">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label"> &nbsp;Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Terms & Conditions is required</div>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-primary mr-1">Login</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Modal-->
+<div class="modal fade" id="error" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [ngStyle]="{'display':display}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span class="" aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        The Username and Password do not match.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" aria-label="Close" aria-hidden="true">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="success" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" [ngStyle]="{'display':display}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span class="" aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        Login Successfully
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" aria-hidden="true">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay"></div>
